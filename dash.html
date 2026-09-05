@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
+>
+
+<meta name="theme-color" content="#050b18">
+
+<meta
+    name="description"
+    content="ESPOIR SERVICE — Tableau de bord"
+>
+
+<title>ESPOIR SERVICE — Dashboard</title>
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+:root{
+
+    --bg:#030712;
+    --bg2:#07101f;
+
+    --card:#0a1425;
+    --card2:#0e1a2d;
+
+    --blue:#1677ff;
+    --blue2:#0755c9;
+    --cyan:#00b7ff;
+
+    --white:#fff;
+    --text:#e9f0fa;
+    --muted:#8190a8;
+
+    --border:rgba(255,255,255,.07);
+
+    --green:#20d67b;
+    --red:#ff5263;
+    --orange:#ffad42;
+}
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body{
+
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(22,119,255,.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 100% 60%,
+            rgba(0,183,255,.08),
+            transparent 25%
+        ),
+        var(--bg);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+
+    width:100%;
+    max-width:1250px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    padding-bottom:90px;
+
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    position:sticky;
+    top:0;
+
+    z-index:50;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    height:72px;
+
+    padding:0 22px;
+
+    background:rgba(3,7,18,.82);
+
+    border-bottom:1px solid var(--border);
+
+    backdrop-filter:blur(18px);
+
+}
+
+.brand{
+
+    display:flex;
+    align-items:center;
+    gap:11px;
+
+}
+
+.brand-logo{
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1682ff,
+            #0646a8
+        );
+
+    box-shadow:
+        0 8px 25px rgba(0,91,220,.25);
+
+}
+
+.brand-logo i{
+
+    font-size:19px;
+
+}
+
+.brand-name{
+
+    font-weight:900;
+    font-size:16px;
+
+}
+
+.brand-name span{
+
+    color:var(--blue);
+
+}
+
+.header-actions{
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+}
+
+.icon-btn{
+
+    width:42px;
+    height:42px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    background:#07111f;
+
+    color:#c7d3e5;
+
+    cursor:pointer;
+
+    position:relative;
+
+}
+
+.icon-btn:hover{
+
+    border-color:rgba(22,119,255,.4);
+
+}
+
+.notification-dot{
+
+    position:absolute;
+
+    width:7px;
+    height:7px;
+
+    background:#ff4357;
+
+    border-radius:50%;
+
+    top:8px;
+    right:8px;
+
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content{
+
+    padding:25px 22px;
+
+}
+
+.welcome{
+
+    margin-bottom:23px;
+
+}
+
+.welcome small{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+.welcome h1{
+
+    margin-top:5px;
+
+    font-size:27px;
+
+    font-weight:900;
+
+}
+
+.welcome h1 span{
+
+    color:var(--blue);
+
+}
+
+/* =========================================================
+   BALANCE CARD
+========================================================= */
+
+.balance-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:190px;
+
+    padding:25px;
+
+    border-radius:23px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d55b9,
+            #08295d 60%,
+            #06162e
+        );
+
+    border:1px solid rgba(75,155,255,.18);
+
+    box-shadow:
+        0 20px 45px rgba(0,62,150,.2);
+
+}
+
+.balance-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:230px;
+    height:230px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+    right:-100px;
+    top:-100px;
+
+}
+
+.balance-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    background:rgba(0,183,255,.08);
+
+    right:70px;
+    bottom:-100px;
+
+}
+
+.balance-top{
+
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+}
+
+.balance-label{
+
+    color:#c9dcf7;
+
+    font-size:12px;
+
+}
+
+.balance-icon{
+
+    width:40px;
+    height:40px;
+
+    border-radius:12px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(255,255,255,.1);
+
+}
+
+.balance{
+
+    position:relative;
+    z-index:2;
+
+    margin-top:12px;
+
+    font-size:34px;
+
+    font-weight:900;
+
+}
+
+.currency{
+
+    font-size:14px;
+
+    color:#c3d8f5;
+
+    font-weight:700;
+
+}
+
+.balance-actions{
+
+    position:relative;
+    z-index:2;
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+.balance-btn{
+
+    padding:10px 15px;
+
+    border:1px solid rgba(255,255,255,.16);
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.1);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.balance-btn:hover{
+
+    background:rgba(255,255,255,.17);
+
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:14px;
+
+    margin-top:18px;
+
+}
+
+.stat-card{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(14,26,45,.96),
+            rgba(6,13,25,.98)
+        );
+
+    border:1px solid var(--border);
+
+}
+
+.stat-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.stat-icon{
+
+    width:38px;
+    height:38px;
+
+    border-radius:11px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(22,119,255,.1);
+
+    color:#4193ff;
+
+}
+
+.stat-card h3{
+
+    margin-top:15px;
+
+    font-size:22px;
+
+}
+
+.stat-card p{
+
+    margin-top:5px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+
+    margin-top:27px;
+
+}
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:14px;
+
+}
+
+.section-title{
+
+    font-size:17px;
+
+    font-weight:800;
+
+}
+
+.see-all{
+
+    border:0;
+
+    background:none;
+
+    color:#348aff;
+
+    font-size:11px;
+
+    cursor:pointer;
+
+}
+
+/* =========================================================
+   QUICK SERVICES
+========================================================= */
+
+.quick-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:13px;
+
+}
+
+.quick-card{
+
+    min-height:125px;
+
+    padding:17px;
+
+    border-radius:17px;
+
+    background:#091321;
+
+    border:1px solid var(--border);
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.quick-card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:
+        rgba(22,119,255,.35);
+
+}
+
+.quick-icon{
+
+    width:43px;
+    height:43px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:
+        rgba(22,119,255,.11);
+
+    color:#4b9aff;
+
+}
+
+.quick-card h3{
+
+    margin-top:13px;
+
+    font-size:13px;
+
+}
+
+.quick-card p{
+
+    margin-top:5px;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+}
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.products-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:14px;
+
+}
+
+.product-card{
+
+    overflow:hidden;
+
+    border-radius:17px;
+
+    background:#091321;
+
+    border:1px solid var(--border);
+
+}
+
+.product-image{
+
+    height:145px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #101f36,
+            #06101f
+        );
+
+    font-size:42px;
+
+    color:#277fff;
+
+}
+
+.product-info{
+
+    padding:14px;
+
+}
+
+.product-info h3{
+
+    font-size:13px;
+
+}
+
+.product-info p{
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:5px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.product-bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:13px;
+
+}
+
+.price{
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:800;
+
+}
+
+.buy-btn{
+
+    border:0;
+
+    background:#126fe9;
+
+    color:white;
+
+    padding:8px 10px;
+
+    border-radius:9px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+/* =========================================================
+   ORDERS
+========================================================= */
+
+.orders{
+
+    background:#091321;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+}
+
+.order{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 120px 100px;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:16px 18px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.order:last-child{
+
+    border-bottom:0;
+
+}
+
+.order-name{
+
+    font-size:12px;
+    font-weight:700;
+
+}
+
+.order-date{
+
+    margin-top:4px;
+
+    font-size:10px;
+
+    color:var(--muted);
+
+}
+
+.order-price{
+
+    font-size:12px;
+    font-weight:700;
+
+}
+
+.status{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    padding:6px 9px;
+
+    border-radius:20px;
+
+    font-size:9px;
+
+    font-weight:700;
+
+}
+
+.status.success{
+
+    color:#4ce69a;
+
+    background:rgba(32,214,123,.1);
+
+}
+
+.status.pending{
+
+    color:#ffc46d;
+
+    background:rgba(255,173,66,.1);
+
+}
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+.bottom-nav{
+
+    position:fixed;
+
+    z-index:100;
+
+    bottom:12px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(
+        calc(100% - 24px),
+        620px
+    );
+
+    height:66px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    align-items:center;
+
+    padding:6px;
+
+    border-radius:20px;
+
+    background:
+        rgba(8,17,31,.94);
+
+    border:1px solid var(--border);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.5);
+
+    backdrop-filter:blur(20px);
+
+}
+
+.nav-item{
+
+    height:54px;
+
+    border:0;
+
+    background:none;
+
+    color:#687b96;
+
+    cursor:pointer;
+
+    border-radius:15px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:4px;
+
+    font-size:9px;
+
+}
+
+.nav-item i{
+
+    font-size:17px;
+
+}
+
+.nav-item.active{
+
+    color:#3990ff;
+
+    background:
+        rgba(22,119,255,.1);
+
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:300;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(0,0,0,.7);
+
+    backdrop-filter:blur(7px);
+
+}
+
+.modal.show{
+
+    display:flex;
+
+}
+
+.modal-card{
+
+    width:100%;
+
+    max-width:400px;
+
+    padding:23px;
+
+    border-radius:20px;
+
+    background:#0a1526;
+
+    border:1px solid var(--border);
+
+}
+
+.modal-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.modal-head h2{
+
+    font-size:17px;
+
+}
+
+.close{
+
+    border:0;
+
+    background:none;
+
+    color:#71829b;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+.modal-card p{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:1.6;
+
+    margin-top:15px;
+
+}
+
+.modal-btn{
+
+    width:100%;
+
+    margin-top:18px;
+
+    height:45px;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:#1475f5;
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:800px){
+
+    .stats-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .quick-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .products-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:520px){
+
+    .header{
+
+        padding:0 14px;
+
+    }
+
+    .content{
+
+        padding:20px 14px 100px;
+
+    }
+
+    .brand-name{
+
+        font-size:14px;
+
+    }
+
+    .welcome h1{
+
+        font-size:23px;
+
+    }
+
+    .balance{
+
+        font-size:29px;
+
+    }
+
+    .stats-grid{
+
+        gap:10px;
+
+    }
+
+    .stat-card{
+
+        padding:14px;
+
+    }
+
+    .quick-grid{
+
+        gap:10px;
+
+    }
+
+    .products-grid{
+
+        gap:10px;
+
+    }
+
+    .product-image{
+
+        height:120px;
+
+    }
+
+    .order{
+
+        grid-template-columns:
+            1fr auto;
+
+    }
+
+    .order-price{
+
+        display:none;
+
+    }
+
+    .order .status{
+
+        grid-column:2;
+
+        grid-row:1 / span 2;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="app">
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            <i class="fa-solid fa-store"></i>
+        </div>
+
+        <div class="brand-name">
+            ESPOIR <span>SERVICE</span>
+        </div>
+
+    </div>
+
+
+    <div class="header-actions">
+
+        <button
+            class="icon-btn"
+            onclick="openNotifications()"
+        >
+
+            <i class="fa-regular fa-bell"></i>
+
+            <span class="notification-dot"></span>
+
+        </button>
+
+
+        <button
+            class="icon-btn"
+            onclick="goTo('profil.html')"
+        >
+
+            <i class="fa-regular fa-user"></i>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     CONTENT
+====================================================== -->
+
+<main class="content">
+
+
+    <div class="welcome">
+
+        <small id="dateText">
+            Bienvenue aujourd'hui
+        </small>
+
+        <h1>
+            Bonjour, <span id="userName">Client</span> 👋
+        </h1>
+
+    </div>
+
+
+    <!-- =================================================
+         BALANCE
+    ================================================== -->
+
+    <section class="balance-card">
+
+        <div class="balance-top">
+
+            <div>
+
+                <div class="balance-label">
+                    Solde disponible
+                </div>
+
+                <div class="balance">
+                    <span id="balance">0</span>
+                    <span class="currency">FC</span>
+                </div>
+
+            </div>
+
+
+            <div class="balance-icon">
+
+                <i class="fa-solid fa-wallet"></i>
+
+            </div>
+
+        </div>
+
+
+        <div class="balance-actions">
+
+            <button
+                class="balance-btn"
+                onclick="recharge()"
+            >
+                <i class="fa-solid fa-plus"></i>
+                Recharger
+            </button>
+
+            <button
+                class="balance-btn"
+                onclick="goTo('boutique.html')"
+            >
+                <i class="fa-solid fa-cart-shopping"></i>
+                Acheter
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         STATS
+    ================================================== -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+
+            </div>
+
+            <h3 id="ordersCount">
+                0
+            </h3>
+
+            <p>
+                Commandes
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-coins"></i>
+                </div>
+
+            </div>
+
+            <h3 id="spentAmount">
+                0 FC
+            </h3>
+
+            <p>
+                Total dépensé
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+            </div>
+
+            <h3 id="points">
+                0
+            </h3>
+
+            <p>
+                Points fidélité
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-ticket"></i>
+                </div>
+
+            </div>
+
+            <h3>
+                0
+            </h3>
+
+            <p>
+                Coupons disponibles
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         QUICK SERVICES
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="section-title">
+                Accès rapide
+            </div>
+
+            <button
+                class="see-all"
+                onclick="goTo('boutique.html')"
+            >
+                Voir la boutique
+            </button>
+
+        </div>
+
+
+        <div class="quick-grid">
+
+
+            <div
+                class="quick-card"
+                onclick="goTo('boutique.html')"
+            >
+
+                <div class="quick-icon">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+
+                <h3>
+                    Boutique
+                </h3>
+
+                <p>
+                    Découvrez nos produits
+                </p>
+
+            </div>
+
+
+            <div
+                class="quick-card"
+                onclick="openOrders()"
+            >
+
+                <div class="quick-icon">
+                    <i class="fa-solid fa-box"></i>
+                </div>
+
+                <h3>
+                    Mes commandes
+                </h3>
+
+                <p>
+                    Suivez vos achats
+                </p>
+
+            </div>
+
+
+            <div
+                class="quick-card"
+                onclick="recharge()"
+            >
+
+                <div class="quick-icon">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+
+                <h3>
+                    Recharger
+                </h3>
+
+                <p>
+                    Ajouter de l'argent
+                </p>
+
+            </div>
+
+
+            <div
+                class="quick-card"
+                onclick="goTo('profil.html')"
+            >
+
+                <div class="quick-icon">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+
+                <h3>
+                    Mon profil
+                </h3>
+
+                <p>
+                    Gérer votre compte
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         PRODUCTS
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="section-title">
+                Produits populaires
+            </div>
+
+            <button
+                class="see-all"
+                onclick="goTo('boutique.html')"
+            >
+                Tout voir
+            </button>
+
+        </div>
+
+
+        <div class="products-grid">
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+
+                <div class="product-info">
+
+                    <h3>
+                        Service Digital
+                    </h3>
+
+                    <p>
+                        Solution numérique premium
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            5 000 FC
+                        </span>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyProduct('Service Digital',5000)"
+                        >
+                            Acheter
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+
+                <div class="product-info">
+
+                    <h3>
+                        Service Web
+                    </h3>
+
+                    <p>
+                        Produit web professionnel
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            10 000 FC
+                        </span>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyProduct('Service Web',10000)"
+                        >
+                            Acheter
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+
+                <div class="product-info">
+
+                    <h3>
+                        Pack Premium
+                    </h3>
+
+                    <p>
+                        Offre complète ESPOIR
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            15 000 FC
+                        </span>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyProduct('Pack Premium',15000)"
+                        >
+                            Acheter
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+
+                <div class="product-info">
+
+                    <h3>
+                        Offre VIP
+                    </h3>
+
+                    <p>
+                        Avantages exclusifs
+                    </p>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            25 000 FC
+                        </span>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyProduct('Offre VIP',25000)"
+                        >
+                            Acheter
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         ORDERS
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="section-title">
+                Dernières commandes
+            </div>
+
+            <button
+                class="see-all"
+                onclick="openOrders()"
+            >
+                Voir tout
+            </button>
+
+        </div>
+
+
+        <div class="orders">
+
+
+            <div class="order">
+
+                <div>
+
+                    <div class="order-name">
+                        Aucune commande
+                    </div>
+
+                    <div class="order-date">
+                        Vos achats apparaîtront ici
+                    </div>
+
+                </div>
+
+                <div class="order-price">
+                    —
+                </div>
+
+                <span class="status pending">
+                    En attente
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+</div>
+
+
+<!-- =====================================================
+     BOTTOM NAV
+====================================================== -->
+
+<nav class="bottom-nav">
+
+
+    <button
+        class="nav-item active"
+        onclick="goTo('dash.html')"
+    >
+
+        <i class="fa-solid fa-house"></i>
+
+        Accueil
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        onclick="goTo('boutique.html')"
+    >
+
+        <i class="fa-solid fa-store"></i>
+
+        Boutique
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        onclick="openOrders()"
+    >
+
+        <i class="fa-solid fa-box"></i>
+
+        Commandes
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        onclick="goTo('profil.html')"
+    >
+
+        <i class="fa-solid fa-user"></i>
+
+        Profil
+
+    </button>
+
+
+</nav>
+
+
+<!-- =====================================================
+     MODAL
+====================================================== -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div class="modal-card">
+
+        <div class="modal-head">
+
+            <h2 id="modalTitle">
+                ESPOIR SERVICE
+            </h2>
+
+            <button
+                class="close"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <p id="modalText">
+            Bienvenue sur ESPOIR SERVICE.
+        </p>
+
+        <button
+            class="modal-btn"
+            onclick="closeModal()"
+        >
+            Fermer
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function goTo(page){
+
+    window.location.href = page;
+
+}
+
+
+/* =========================================================
+   USER DATA
+========================================================= */
+
+let currentUser = null;
+
+try{
+
+    const saved =
+        localStorage.getItem(
+            "espoirCurrentUser"
+        );
+
+    if(saved){
+
+        currentUser =
+            JSON.parse(saved);
+
+    }
+
+}catch(error){
+
+    console.error(error);
+
+}
+
+
+/* =========================================================
+   LOAD USER
+========================================================= */
+
+function loadUser(){
+
+    if(!currentUser){
+
+        document.getElementById(
+            "userName"
+        ).textContent = "Client";
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "userName"
+    ).textContent =
+        currentUser.name ||
+        "Client";
+
+
+    document.getElementById(
+        "balance"
+    ).textContent =
+        formatNumber(
+            currentUser.balance || 0
+        );
+
+
+    document.getElementById(
+        "points"
+    ).textContent =
+        formatNumber(
+            currentUser.points || 0
+        );
+
+
+}
+
+
+/* =========================================================
+   NUMBER FORMAT
+========================================================= */
+
+function formatNumber(number){
+
+    return Number(number || 0)
+        .toLocaleString(
+            "fr-FR"
+        );
+
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function loadDate(){
+
+    const now =
+        new Date();
+
+    const date =
+        now.toLocaleDateString(
+            "fr-FR",
+            {
+                weekday:"long",
+                day:"numeric",
+                month:"long",
+                year:"numeric"
+            }
+        );
+
+    document.getElementById(
+        "dateText"
+    ).textContent =
+        "Aujourd'hui, " + date;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(title,text){
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent = title;
+
+    document.getElementById(
+        "modalText"
+    ).textContent = text;
+
+    document.getElementById(
+        "modal"
+    ).classList.add("show");
+
+}
+
+function closeModal(){
+
+    document.getElementById(
+        "modal"
+    ).classList.remove("show");
+
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+========================================================= */
+
+function openNotifications(){
+
+    openModal(
+        "Notifications",
+        "Vous n'avez aucune nouvelle notification."
+    );
+
+}
+
+
+/* =========================================================
+   ORDERS
+========================================================= */
+
+function openOrders(){
+
+    openModal(
+        "Mes commandes",
+        "La page complète de vos commandes sera disponible ici."
+    );
+
+}
+
+
+/* =========================================================
+   RECHARGE
+========================================================= */
+
+function recharge(){
+
+    openModal(
+        "Recharger mon compte",
+        "La page de recharge permettra de choisir un moyen de paiement et d'ajouter des fonds à votre solde."
+    );
+
+}
+
+
+/* =========================================================
+   BUY
+========================================================= */
+
+function buyProduct(name,price){
+
+    openModal(
+        "Confirmer l'achat",
+        name +
+        " — " +
+        formatNumber(price) +
+        " FC. La validation et le paiement seront connectés à la boutique."
+    );
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout(){
+
+    localStorage.removeItem(
+        "espoirCurrentUser"
+    );
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+loadUser();
+
+loadDate();
+
+
+/* =========================================================
+   PROTECTION SIMPLE
+========================================================= */
+
+if(!currentUser){
+
+    /*
+       Pour l'instant on laisse le dashboard
+       accessible en mode démo.
+
+       Lorsque Firebase sera connecté,
+       cette partie sera remplacée par
+       Firebase Authentication.
+    */
+
+}
+
+</script>
+
+</body>
+</html>
