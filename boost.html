@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ESPOIR BOT - Boutique</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#0f0f0f;color:#fff}
+header{position:sticky;top:0;background:#111;border-bottom:1px solid #333;padding:12px;display:flex;justify-content:space-between;align-items:center}
+.logo{color:#00ff88;font-weight:bold}
+nav button{padding:8px 14px;border-radius:20px;border:0;background:#222;color:#fff;margin-left:5px}
+nav button.active{background:#00ff88;color:#000;font-weight:bold}
+.page{display:none;padding:16px;max-width:900px;margin:auto}
+.page.active{display:block}
+.card{background:#1a1a1a;border:1px solid #333;border-radius:14px;padding:16px;margin:12px 0}
+.btn{width:100%;background:#00ff88;color:#000;border:0;padding:14px;border-radius:10px;font-weight:bold;margin-top:10px}
+input{width:100%;padding:13px;background:#222;border:1px solid #333;border-radius:10px;color:#fff;margin:6px 0}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">ESPOIR BOT</div>
+<nav>
+<button onclick="go('index')" id="b-index" class="active">Accueil</button>
+<button onclick="go('profil')" id="b-profil">Profil</button>
+<button onclick="go('boutique')" id="b-boutique">Boutique</button>
+<button onclick="go('dash')" id="b-dash">Dash</button>
+</nav>
+</header>
+
+<div id="index" class="page active">
+<div class="card"><h1>Bienvenue 🚀</h1><p style="color:#aaa;margin:10px 0">Ta boutique fonctionne à 100%. Passe de 5000 à 10k avec de vrais clients.</p><button class="btn" onclick="go('boutique')">Voir Boutique</button></div>
+</div>
+
+<div id="profil" class="page">
+<div class="card"><h2>Mon Profil</h2>
+<input id="nom" placeholder="Ton nom"><input id="lien" placeholder="Lien Facebook / TikTok"><button class="btn" onclick="alert('Profil enregistré: '+nom.value)">Enregistrer</button>
+</div>
+</div>
+
+<div id="boutique" class="page">
+<div class="card"><h2>Boutique</h2></div>
+<div class="card"><h3>Pack Starter - $5</h3><p style="color:#aaa">Partage 24h</p><button class="btn" onclick="buy('Starter $5')">Acheter</button></div>
+<div class="card"><h3>Pack Pro - $15</h3><p style="color:#aaa">Partage 7 jours (le plus vendu)</p><button class="btn" onclick="buy('Pro $15')">Acheter</button></div>
+<div class="card"><p id="panier" style="color:#aaa">Aucun pack choisi</p><input id="pay" placeholder="Numéro M-Pesa / Airtel"><button class="btn" onclick="order()">Commander via WhatsApp</button></div>
+</div>
+
+<div id="dash" class="page">
+<div class="card"><h2>Dashboard</h2><p style="color:#aaa;margin-top:10px">Commandes: 12 | Gains: $86 | Vues: 1,247</p></div>
+</div>
+
+<script>
+let selected="";
+function go(p){document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));document.querySelectorAll('nav button').forEach(e=>e.classList.remove('active'));document.getElementById(p).classList.add('active');document.getElementById('b-'+p).classList.add('active')}
+function buy(p){selected=p;document.getElementById('panier').innerHTML='✅ Choisi: <b style=color:#00ff88>'+p+'</b>';go('boutique')}
+function order(){if(!selected)return alert('Choisis un pack');let m="Bonjour Espoir Bot, je commande "+selected+" | Mon numero: "+document.getElementById('pay').value+" | Profil: "+document.getElementById('lien').value;window.open("https://wa.me/243970000000?text="+encodeURIComponent(m),"_blank")}
+</script>
+</body>
+</html>
